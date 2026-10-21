@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "build:poker": "tsc --noEmit && vite build --mode poker",
-    "build:blackjack": "tsc --noEmit && vite build --mode blackjack",
+    "build:blackjack": "tsc --noEmit && vite build --mode blackjack && node -e \"require('fs').renameSync('dist/blackjack.html','dist/index.html')\"",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview"
   },

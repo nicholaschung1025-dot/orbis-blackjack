@@ -9,7 +9,9 @@ import react from "@vitejs/plugin-react";
  *   local build      -> builds both pages               (default)
  *
  * A relative base keeps the assets working under a project page path such as
- * /orbis-odds/ without a rebuild.
+ * /orbis-odds/ without a rebuild. The standalone blackjack build renames its
+ * entry to index.html afterwards, because GitHub Pages serves whatever sits
+ * at the root of the site.
  */
 export default defineConfig(({ command, mode }) => {
   const target =

@@ -27,7 +27,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run build -- --mode ${{ env.APP_MODE }}
+      - run: npm run build:${{ env.APP_MODE }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
