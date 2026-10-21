@@ -1,3 +1,5 @@
+import { EmptySlot, MiniCard } from "./MiniCard";
+
 const steps = [
   {
     index: "01",
@@ -27,51 +29,8 @@ const odds = [
   { label: "Loss", value: 33.5, className: "bg-ember", text: "text-ember" },
 ];
 
-const SPADES = "♠";
-const HEARTS = "♥";
-
-function MiniCard({
-  rank,
-  suit,
-  red = false,
-}: {
-  rank: string;
-  suit: string;
-  red?: boolean;
-}) {
-  return (
-    <div className="relative h-[48px] w-[34px] overflow-hidden rounded-[6px] bg-cream shadow-[0_10px_20px_-12px_rgba(0,0,0,0.9)]">
-      <span
-        className={`absolute left-[4px] top-[3px] font-grotesk text-[12px] leading-none ${
-          red ? "text-ember" : "text-background"
-        }`}
-      >
-        {rank}
-      </span>
-      <span
-        className={`absolute left-[4px] top-[16px] text-[10px] leading-none ${
-          red ? "text-ember/85" : "text-background/55"
-        }`}
-      >
-        {suit}
-      </span>
-      <span
-        aria-hidden="true"
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px] leading-none ${
-          red ? "text-ember/45" : "text-background/20"
-        }`}
-      >
-        {suit}
-      </span>
-    </div>
-  );
-}
-
-function EmptySlot() {
-  return (
-    <div className="h-[48px] w-[34px] rounded-[6px] border border-dashed border-white/12" />
-  );
-}
+const SPADES = "spade";
+const HEARTS = "heart";
 
 function Figure({ index }: { index: string }) {
   if (index === "01") {

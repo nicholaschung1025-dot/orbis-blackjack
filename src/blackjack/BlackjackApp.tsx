@@ -10,6 +10,7 @@ import {
   type Suit,
 } from "../lib/blackjack";
 import { HandBuilder, type Slot } from "./HandBuilder";
+import { MiniCard } from "../components/MiniCard";
 import { siblingUrl } from "../lib/links";
 import { ResultPanel } from "./ResultPanel";
 
@@ -20,6 +21,118 @@ const socials = [
 ];
 
 const DECK_OPTIONS = [1, 2, 6, 8];
+
+/** Six-deck S17 dealer bust percentage by up card, the published figures. */
+const BUST_BY_UP = [
+  { up: "2", value: 35.3 },
+  { up: "3", value: 37.6 },
+  { up: "4", value: 40.3 },
+  { up: "5", value: 42.9 },
+  { up: "6", value: 42.1 },
+  { up: "7", value: 26.0 },
+  { up: "8", value: 23.9 },
+  { up: "9", value: 23.3 },
+  { up: "10", value: 21.4 },
+  { up: "A", value: 11.7 },
+];
+
+const OUTCOMES = [
+  { label: "Win", value: 54.8, className: "bg-neon", text: "text-neon" },
+  { label: "Push", value: 6.8, className: "bg-cream/45", text: "text-cream/70" },
+  { label: "Lose", value: 38.4, className: "bg-ember", text: "text-ember" },
+];
+
+const DRAWS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
+function MethodFigure({ index }: { index: string }) {
+  if (index === "01") {
+    return (
+      <div className="flex h-[186px] flex-col justify-center">
+        <div className="mb-3 flex items-baseline justify-between">
+          <p className="text-[8px] uppercase tracking-[0.24em] text-cream/45">
+            Dealer bust by up card
+          </p>
+          <p className="font-grotesk text-[13px] leading-none text-neon">
+            6 decks
+          </p>
+        </div>
+        <div className="flex h-[96px] items-end gap-1">
+          {BUST_BY_UP.map((row) => (
+            <div key={row.up} className="flex flex-1 flex-col items-center gap-1">
+              <div className="flex h-[84px] w-full items-end">
+                <div
+                  className="w-full rounded-t-[2px] bg-gradient-to-t from-neon/[0.06] to-neon/70"
+                  style={{ height: `${(row.value / 45) * 100}%` }}
+                />
+              </div>
+              <span className="text-[7px] leading-none text-cream/40">
+                {row.up}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-2 h-px w-full bg-white/10" />
+      </div>
+    );
+  }
+
+  if (index === "02") {
+    return (
+      <div className="flex h-[186px] flex-col justify-center gap-4">
+        <div>
+          <p className="text-[8px] uppercase tracking-[0.24em] text-cream/45">
+            Your hand
+          </p>
+          <div className="mt-2.5 flex items-center gap-1.5">
+            <MiniCard rank="10" suit="spade" />
+            <MiniCard rank="6" suit="club" />
+            <span className="ml-1 font-grotesk text-[15px] leading-none text-cream/40">
+              = 16
+            </span>
+          </div>
+        </div>
+        <div>
+          <p className="text-[8px] uppercase tracking-[0.24em] text-cream/45">
+            Every draw priced
+          </p>
+          <div className="mt-2.5 flex flex-wrap gap-1">
+            {DRAWS.map((rank) => (
+              <span
+                key={rank}
+                className="grid h-[22px] min-w-[20px] place-items-center rounded-[5px] border border-white/10 bg-white/[0.03] px-1 font-mono text-[9px] leading-none text-cream/60"
+              >
+                {rank}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex h-[186px] flex-col justify-center gap-4">
+      {OUTCOMES.map((row) => (
+        <div key={row.label}>
+          <div className="flex items-baseline justify-between">
+            <p className="text-[8px] uppercase tracking-[0.24em] text-cream/55">
+              {row.label}
+            </p>
+            <p className={`font-grotesk text-[13px] leading-none ${row.text}`}>
+              {row.value.toFixed(1)}%
+            </p>
+          </div>
+          <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.07]">
+            <div
+              className={`h-full rounded-full ${row.className}`}
+              style={{ width: `${row.value}%` }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Toggle({
   label,
@@ -368,6 +481,9 @@ export function BlackjackApp() {
                   </span>
                   <span className="h-1.5 w-1.5 rounded-full bg-neon/60 transition-all group-hover:bg-neon group-hover:shadow-[0_0_10px_rgba(111,255,0,0.9)]" />
                 </div>
+
+                <MethodFigure index={step.index} />
+
                 <h3 className="mt-6 font-grotesk text-[20px] uppercase leading-none sm:text-[22px]">
                   {step.title}
                 </h3>
