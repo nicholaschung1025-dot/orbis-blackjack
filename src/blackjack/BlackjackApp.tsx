@@ -327,7 +327,7 @@ export function BlackjackApp() {
               Section 01 / Live calculator
             </p>
             <p className="hidden text-[8px] uppercase tracking-[0.22em] text-cream/40 sm:block">
-              Deal a hand —read the edge
+              Deal a hand — read the edge
             </p>
           </div>
 
@@ -510,7 +510,7 @@ export function BlackjackApp() {
               <div className="mt-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
                 <p className="max-w-[360px] text-[10px] uppercase leading-[1.9] tracking-[0.04em] text-cream/55">
                   No account, no sign-up. The engine runs locally in your
-                  browser —deal a hand, set the rules, and let the numbers
+                  browser — deal a hand, set the rules, and let the numbers
                   speak.
                 </p>
                 <a
