@@ -1,4 +1,3 @@
-import { Github, Mail, Twitter } from "lucide-react";
 import { SpaceVideo } from "./SpaceVideo";
 import { VIDEOS } from "../lib/media";
 
@@ -6,12 +5,6 @@ const stats = [
   { value: "52", label: "Cards" },
   { value: "1–8", label: "Rivals" },
   { value: "24K", label: "Runouts" },
-];
-
-const socials = [
-  { label: "Email", icon: Mail },
-  { label: "Twitter", icon: Twitter },
-  { label: "Github", icon: Github },
 ];
 
 export function Hero() {
@@ -44,19 +37,6 @@ export function Hero() {
           <span className="mt-3 block rotate-0 text-right font-condiment text-[clamp(1.6rem,3.6vw,3.6rem)] normal-case leading-none text-neon opacity-90 mix-blend-exclusion sm:mt-4 xl:pointer-events-none xl:absolute xl:bottom-[6%] xl:right-[2%] xl:mt-0 xl:-rotate-3">
             every street
           </span>
-
-          <div className="mt-10 flex items-center justify-center gap-3 lg:hidden">
-            {socials.map((social) => (
-              <a
-                key={social.label}
-                href="#about"
-                aria-label={social.label}
-                className="liquid-glass grid h-14 w-14 place-items-center rounded-[1rem] text-cream/75 transition-colors hover:bg-white/10 hover:text-cream"
-              >
-                <social.icon size={20} strokeWidth={1.6} />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="mt-10 flex flex-col justify-between gap-8 border-t border-white/10 pt-6 sm:mt-12 lg:flex-row lg:items-end">
@@ -79,19 +59,6 @@ export function Hero() {
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="absolute right-6 top-28 hidden flex-col gap-3 lg:flex">
-        {socials.map((social) => (
-          <a
-            key={social.label}
-            href="#about"
-            aria-label={social.label}
-            className="liquid-glass grid h-14 w-14 place-items-center rounded-[1rem] text-cream/75 transition-colors hover:bg-white/10 hover:text-cream"
-          >
-            <social.icon size={20} strokeWidth={1.6} />
-          </a>
-        ))}
       </div>
     </section>
   );

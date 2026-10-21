@@ -1,12 +1,6 @@
-import { ArrowUpRight, Github, Mail, Twitter } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { SpaceVideo } from "./SpaceVideo";
 import { VIDEOS } from "../lib/media";
-
-const socials = [
-  { label: "Email", icon: Mail },
-  { label: "Twitter", icon: Twitter },
-  { label: "Github", icon: Github },
-];
 
 export function Footer() {
   return (
@@ -68,18 +62,6 @@ export function Footer() {
                 <span className="text-[8px] uppercase tracking-[0.2em] text-cream/45">
                   © 2026 — For study, not for gambling advice
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
-                {socials.map((social) => (
-                  <a
-                    key={social.label}
-                    href="#about"
-                    aria-label={social.label}
-                    className="liquid-glass grid h-10 w-10 place-items-center rounded-[12px] text-cream/75 transition hover:bg-white/10 hover:text-cream"
-                  >
-                    <social.icon size={15} strokeWidth={1.6} />
-                  </a>
-                ))}
               </div>
             </div>
           </div>

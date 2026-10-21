@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Github, Mail, Twitter } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import {
   DEFAULT_RULES,
   analyze,
@@ -13,12 +13,6 @@ import { HandBuilder, type Slot } from "./HandBuilder";
 import { MiniCard } from "../components/MiniCard";
 import { siblingUrl } from "../lib/links";
 import { ResultPanel } from "./ResultPanel";
-
-const socials = [
-  { label: "Email", icon: Mail },
-  { label: "Twitter", icon: Twitter },
-  { label: "Github", icon: Github },
-];
 
 const DECK_OPTIONS = [1, 2, 6, 8];
 
@@ -333,7 +327,7 @@ export function BlackjackApp() {
               Section 01 / Live calculator
             </p>
             <p className="hidden text-[8px] uppercase tracking-[0.22em] text-cream/40 sm:block">
-              Deal a hand ??read the edge
+              Deal a hand —read the edge
             </p>
           </div>
 
@@ -516,7 +510,7 @@ export function BlackjackApp() {
               <div className="mt-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
                 <p className="max-w-[360px] text-[10px] uppercase leading-[1.9] tracking-[0.04em] text-cream/55">
                   No account, no sign-up. The engine runs locally in your
-                  browser ??deal a hand, set the rules, and let the numbers
+                  browser —deal a hand, set the rules, and let the numbers
                   speak.
                 </p>
                 <a
@@ -537,20 +531,8 @@ export function BlackjackApp() {
                     Orbis.Bj
                   </span>
                   <span className="text-[8px] uppercase tracking-[0.2em] text-cream/45">
-                    © 2026 ??For study, not for gambling advice
+                    © 2026 — For study, not for gambling advice
                   </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  {socials.map((social) => (
-                    <a
-                      key={social.label}
-                      href="#about"
-                      aria-label={social.label}
-                      className="liquid-glass grid h-10 w-10 place-items-center rounded-[12px] text-cream/75 transition hover:bg-white/10 hover:text-cream"
-                    >
-                      <social.icon size={15} strokeWidth={1.6} />
-                    </a>
-                  ))}
                 </div>
               </div>
             </div>
