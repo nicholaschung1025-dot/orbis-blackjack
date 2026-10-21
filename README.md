@@ -68,5 +68,11 @@ npm run typecheck
 
 Both repositories are published with GitHub Pages through
 `.github/workflows/deploy-pages.yml`. The same source tree builds either
-site: the workflow picks the target from the repository name, and Vite emits
-relative asset paths so the site works under the `/repo/` project path.
+site: the workflow picks the target from the repository name, builds it with
+`npm run build:poker` or `npm run build:blackjack`, and pushes the result to
+the `gh-pages` branch that Pages serves.
+
+Vite emits relative asset paths, so the sites work under the `/repo/` project
+path, and the link between the two calculators switches to the sibling
+repository URL when the page is running on `github.io` and to the local path
+during development.
