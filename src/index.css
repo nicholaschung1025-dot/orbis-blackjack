@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-mono text-cream antialiased;
+    font-feature-settings: "tnum" 1;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #6fff00;
+    color: #010828;
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  *:focus-visible {
+    outline: 1px solid rgba(111, 255, 0, 0.7);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.45) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .glass-panel {
+    background:
+      radial-gradient(
+        120% 100% at 0% 0%,
+        rgba(255, 255, 255, 0.055) 0%,
+        rgba(255, 255, 255, 0.015) 45%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      rgba(1, 8, 40, 0.42);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.12),
+      0 40px 90px -60px rgba(0, 0, 0, 0.95);
+  }
+
+  .nav-glass {
+    background: linear-gradient(
+      180deg,
+      rgba(12, 26, 66, 0.86) 0%,
+      rgba(3, 12, 40, 0.82) 100%
+    );
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.14),
+      0 24px 50px -32px rgba(0, 0, 0, 0.95);
+  }
+
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(239, 244, 255, 0.4);
+  }
+
+  .space-dust {
+    background-image:
+      radial-gradient(
+        1px 1px at 24px 32px,
+        rgba(239, 244, 255, 0.7) 50%,
+        transparent 51%
+      ),
+      radial-gradient(
+        1px 1px at 148px 96px,
+        rgba(239, 244, 255, 0.45) 50%,
+        transparent 51%
+      ),
+      radial-gradient(
+        1.4px 1.4px at 228px 168px,
+        rgba(111, 255, 0, 0.5) 50%,
+        transparent 51%
+      ),
+      radial-gradient(
+        1px 1px at 324px 62px,
+        rgba(239, 244, 255, 0.35) 50%,
+        transparent 51%
+      ),
+      radial-gradient(
+        1px 1px at 78px 258px,
+        rgba(239, 244, 255, 0.3) 50%,
+        transparent 51%
+      );
+    background-size:
+      400px 400px,
+      400px 400px,
+      400px 400px,
+      400px 400px,
+      400px 400px;
+  }
+
+  /* Film grain: the source tile is 512x512, so it is repeated at 1:1 rather
+     than stretched over the viewport, which would turn it into a visible mesh. */
+  .grain-overlay {
+    background-image: url("./assets/texture.png");
+    background-size: 512px 512px;
+    background-repeat: repeat;
+    opacity: 0.22;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.06);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes seat-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+
+@keyframes seat-ring {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.92);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+.seat-avatar {
+  animation: seat-float 5.5s ease-in-out infinite;
+}
+
+.seat-avatar:nth-of-type(2n) {
+  animation-delay: -1.7s;
+}
+
+.seat-avatar:nth-of-type(3n) {
+  animation-delay: -3.4s;
+}
+
+.seat-ring {
+  animation: seat-ring 1.5s ease-out infinite;
+}
+
+.animate-drift {
+  animation: drift 26s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+.animate-rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-drift,
+  .animate-blink,
+  .animate-rise {
+    animation: none;
+  }
+  .seat-avatar,
+  .seat-ring {
+    animation: none;
+  }
+}
